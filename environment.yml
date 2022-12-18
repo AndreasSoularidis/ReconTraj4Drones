@@ -27,7 +27,8 @@ dependencies:
   - stonesoup
   - owlready2
   - haversine
-  - exif
   - pip:
     - meteostat
+    - exif
+    
 
