@@ -1,6 +1,7 @@
 name: movingpandas
 channels:
   - conda-forge
+  - zegami 
 dependencies:
   - python=3.10
   - black
