@@ -1,0 +1,7 @@
+fiona==1.8.21
+geopandas==0.10.2
+matplotlib==3.5.1
+movingpandas==0.13.rc1
+pandas==1.4.2
+session_info==1.0.0
+shapely==1.8.0
