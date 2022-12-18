@@ -24,8 +24,8 @@ dependencies:
   - seaborn
   - shapely
   - stonesoup
-  - meteostat=1.6.2
-  - owlready2=0.38
-  - haversine=2.7.0
-  - exif=1.3.4
+  - meteostat
+  - owlready2
+  - haversine
+  - exif
 
