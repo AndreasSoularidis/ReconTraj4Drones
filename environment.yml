@@ -1,0 +1,26 @@
+name: movingpandas
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - black
+  - cartopy
+  - codecov
+  - cython
+  - hvplot
+  - flake8
+  - geopandas
+  - geoviews
+  - geopy
+  - matplotlib
+  - numpy
+  - pandas
+  - panel
+  - pre-commit
+  - pytest
+  - pytest-cov
+  - rasterio
+  - scikit-learn
+  - seaborn
+  - shapely
+  - stonesoup

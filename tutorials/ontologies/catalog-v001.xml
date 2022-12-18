@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.datacron-project.eu/datAcron#" uri="TopDatAcronOnto_SSN_FM.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1670093656752" name="http://i-lab.aegean.gr/kotis/ontologies/onto4drone" uri="dront.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1670093656752" name="http://www.datacron-project.eu/datAcron" uri="TopDatAcronOnto_SSN_FM.owl"/>
+    </group>
+</catalog>

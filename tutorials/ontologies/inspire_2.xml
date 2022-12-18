@@ -1,0 +1,2496 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://i-lab.aegean.gr/kotis/ontologies/onto4drone"
+         xmlns="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#"
+         xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+         xmlns:swrl2="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+         xmlns:x_1.1="http://purl.org/dc/elements/1.1/"
+         xmlns:vann="http://purl.org/vocab/vann/"
+         xmlns:datA="http://www.datacron-project.eu/datAcron#"
+         xmlns:sf="http://www.opengis.net/ont/sf#"
+         xmlns:DUL.="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+         xmlns:geos="http://www.opengis.net/ont/geosparql#">
+
+<owl:Ontology rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone">
+  <owl:versionIRI rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/1.0.1"/>
+  <owl:imports rdf:resource="http://www.datacron-project.eu/datAcron#"/>
+  <x_1.1:contributor>A. Soularidis, i-Lab, University of the Aegean</x_1.1:contributor>
+  <x_1.1:contributor>E. Moraitou, i-Lab, University of the Aegean</x_1.1:contributor>
+  <x_1.1:contributor>K. Kotis, i-Lab, University of the Aegean</x_1.1:contributor>
+  <x_1.1:contributor>S. Angelis, i-Lab, University of the Aegean</x_1.1:contributor>
+  <vann:preferredNamespacePrefix xml:lang="en">dront</vann:preferredNamespacePrefix>
+  <rdfs:comment xml:lang="en">The aim of the ontology is to represent the knowledge related to drones' semantic trajectories (flights, missions, recordings). Reuses datAcron ontology.</rdfs:comment>
+  <rdfs:label xml:lang="en">onto4drone</rdfs:label>
+  <owl:versionInfo xml:lang="en">version 1.0.1
+
+This version includes two extra data properties whose domain is the class DroneCarryingEquipment, three extra data properties whose domain is the class Record, one data properties whose domain is the class EntityOfInterest and two data properties whose domain is the class RegionOfInterest. Regarding the object properties two inverse object properties  (has occured event" and "is produced by") and one more object property ("has interest") have been added.
+
+Furthremore, axioms have been added to the classes Record, Recording Position, and Constant Recording Position.
+
+Additionally, the class EntityOfInterest has been moved under the DUL general class Entity, while the data property "has time" has been removed as well.
+
+Finally some changes/additions which have been conducted to the domains and/or ranges of the data properties hasAltittude, TimeEnd, TimeStart, and has interval date have been removed as well.
+
+Regarding individuals, there have been added all the individuals presented in the example of the knowledge graph designed by the group (https://arrows.app/#/googledrive/ids=1f-NEXdFHa0bSXGaBI6MoCpLdOyLtFXP2).</owl:versionInfo>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+
+<owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#comprises"/>
+
+<owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasPart"/>
+
+<owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasConstituent"/>
+
+<owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasHighPoint"/>
+
+<owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasLowPoint"/>
+
+<owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasTemporalFeature"/>
+
+<owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart"/>
+
+<owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#occurs"/>
+
+<owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#ofMovingObject"/>
+
+<owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isPartOf"/>
+
+<owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant"/>
+
+<owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParticipantIn"/>
+
+<owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRegion"/>
+
+<owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasTimeInterval"/>
+
+<owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#overlaps"/>
+
+<owl:ObjectProperty rdf:about="http://www.opengis.net/ont/geosparql#hasGeometry"/>
+
+<owl:ObjectProperty rdf:about="#carriesEquipment">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  <rdfs:domain rdf:resource="#Drone"/>
+  <rdfs:range rdf:resource="#DroneCarryingEquipment"/>
+  <rdfs:comment xml:lang="en">Specifies the equipment carried by a drone</rdfs:comment>
+  <rdfs:label xml:lang="en">carries equipment</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#encloses">
+  <rdfs:subPropertyOf rdf:resource="http://www.datacron-project.eu/datAcron#hasPart"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#Trajectory"/>
+  <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#Segment"/>
+  <rdfs:comment xml:lang="en">Specifies the trajectory that the segments is part of</rdfs:comment>
+  <rdfs:label xml:lang="en">encloses</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDroneParticipant">
+  <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant"/>
+  <owl:inverseOf rdf:resource="#isDroneParticipantIn"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RecordingEvent"/>
+        <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Drone"/>
+  <rdfs:comment xml:lang="en">Specifies the drone that participates in an event.</rdfs:comment>
+  <rdfs:label xml:lang="en">has drone participant</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isDroneParticipantIn">
+  <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParticipantIn"/>
+  <rdfs:domain rdf:resource="#Drone"/>
+  <rdfs:range>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RecordingEvent"/>
+        <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:range>
+  <rdfs:label xml:lang="en">is drone participant in</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasFlight">
+  <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParticipantIn"/>
+  <rdfs:domain rdf:resource="#UAVDrone"/>
+  <rdfs:range rdf:resource="http://www.opengis.net/ont/sf#Flight"/>
+  <rdfs:label xml:lang="en">has flight</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasInterest">
+  <rdfs:domain rdf:resource="#EntityOfInterest"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  <rdfs:comment xml:lang="en">Correlates an entity of interest with the type of interest that it presents.</rdfs:comment>
+  <rdfs:label xml:lang="en">has interest</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasOccurredEvent">
+  <owl:inverseOf rdf:resource="http://www.datacron-project.eu/datAcron#occurs"/>
+  <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#TrajectoryPart"/>
+  <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+  <rdfs:label xml:lang="en">has occurred event</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasTrajectory">
+  <owl:inverseOf rdf:resource="#trajectoryRefersTo"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+  <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#Trajectory"/>
+  <rdfs:comment xml:lang="en">Specifies the moving object that forms the trajectory.</rdfs:comment>
+  <rdfs:label xml:lang="en">has trajectory</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#trajectoryRefersTo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#Trajectory"/>
+  <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+  <rdfs:comment xml:lang="en">Defines the moving object that the trajectory is referring to.</rdfs:comment>
+  <rdfs:label xml:lang="en">trajectory refers to</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#includesFlight">
+  <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasConstituent"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Mission"/>
+  <rdfs:range rdf:resource="http://www.opengis.net/ont/sf#Flight"/>
+  <rdfs:comment xml:lang="en">Specifies flightes included in a misson</rdfs:comment>
+  <rdfs:label xml:lang="en">includes flight</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isPartOfSwarm">
+  <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isPartOf"/>
+  <owl:inverseOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/hasPartDrone"/>
+  <rdfs:domain rdf:resource="#Drone"/>
+  <rdfs:range rdf:resource="#SwarmOfDrones"/>
+  <rdfs:label xml:lang="en">is part of swarm</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/hasPartDrone">
+  <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart"/>
+  <rdfs:domain rdf:resource="#SwarmOfDrones"/>
+  <rdfs:range rdf:resource="#Drone"/>
+  <rdfs:label xml:lang="en">has part drone</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isProducedBy">
+  <owl:inverseOf rdf:resource="#produces"/>
+  <rdfs:domain rdf:resource="#Record"/>
+  <rdfs:range rdf:resource="#RecordingEvent"/>
+  <rdfs:label xml:lang="en">is produced by</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#produces">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain rdf:resource="#RecordingEvent"/>
+  <rdfs:range rdf:resource="#Record"/>
+  <rdfs:comment xml:lang="en">Specifies the record produced by a recornding event</rdfs:comment>
+  <rdfs:label xml:lang="en">produces</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isRecordedIn">
+  <rdfs:domain rdf:resource="#EntityOfInterest"/>
+  <rdfs:range rdf:resource="#Record"/>
+  <rdfs:comment xml:lang="en">Specifies the records an entity has been recorded in</rdfs:comment>
+  <rdfs:label xml:lang="en">is recorded in</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#records">
+  <rdfs:domain rdf:resource="#RecordingEvent"/>
+  <rdfs:range rdf:resource="#EntityOfInterest"/>
+  <rdfs:comment xml:lang="en">Specifies the entity that is beeing recorded in a recording event</rdfs:comment>
+  <rdfs:label xml:lang="en">records</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#clusters">
+  <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart"/>
+  <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#TrajectoryCluster"/>
+  <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#Trajectory"/>
+  <rdfs:comment>Defines the trajectories clusetered in a TrajectorCluster</rdfs:comment>
+  <rdfs:label xml:lang="en">clusters</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#originatesFrom">
+  <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+  <rdfs:domain rdf:resource="#ProcessedRecord"/>
+  <rdfs:range rdf:resource="#Record"/>
+  <rdfs:comment xml:lang="en">Defines the record from which a processed record originates</rdfs:comment>
+  <rdfs:label xml:lang="en">originates from</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasWeatherCondition"/>
+
+<owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#TimeEnd"/>
+
+<owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#TimeStart"/>
+
+<owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#hasAltitude"/>
+
+<owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#hasLattitude">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#hasLongitude">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasIntervalDate"/>
+
+<owl:DatatypeProperty rdf:about="#hasAddress">
+  <rdfs:domain rdf:resource="#Region_of_Interest"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="en">has address</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasFormat">
+  <rdfs:domain rdf:resource="#Record"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="en">has format</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasMaker">
+  <rdfs:domain rdf:resource="#DroneCarryingEquipment"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="en">has maker</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasModel">
+  <rdfs:domain rdf:resource="#DroneCarryingEquipment"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="en">has model</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasOSMType">
+  <rdfs:domain rdf:resource="#EntityOfInterest"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="en">has OSM type</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasPlaceID">
+  <rdfs:domain rdf:resource="#Region_of_Interest"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="en">has place ID</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasSize">
+  <rdfs:domain rdf:resource="#Record"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="en">has size</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasStoragePath">
+  <rdfs:domain rdf:resource="#Record"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="en">has storage path</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasVelocity">
+  <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#Geometry"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="en">has velocity</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isActivated">
+  <rdfs:domain rdf:resource="#Drone"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:label xml:lang="en">is activated</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isPaused">
+  <rdfs:domain rdf:resource="#Drone"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:label xml:lang="en">is paused</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#minQualifiedCardinality"/>
+
+<owl:AnnotationProperty rdf:about="http://www.datacron-project.eu/datAcron#hasGeometry"/>
+
+<owl:AnnotationProperty rdf:about="http://www.datacron-project.eu/datAcron#reportedMaxTemperature"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+
+<owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+
+<owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Aircraft"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#TrajectoryPart"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Trajectory"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Period"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Instant"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Geometry"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Point"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Time"/>
+
+<owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Event"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#MovingObject"/>
+
+<owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#WeatherCondition"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#ActualTrajectory"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Document"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Region"/>
+
+<owl:Class rdf:about="http://www.opengis.net/ont/sf#Geometry"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#RawPosition"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Segment"/>
+
+<owl:Class rdf:about="http://www.datacron-project.eu/datAcron#TrajectoryCluster"/>
+
+<owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract"/>
+
+<owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalArtifact"/>
+
+<owl:Class rdf:about="http://www.opengis.net/ont/sf#Flight"/>
+
+<owl:Class rdf:about="http://www.opengis.net/ont/sf#Point"/>
+
+<owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+
+<owl:Class rdf:about="#Drone">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+  <rdfs:comment>Any type of unmanned vehicle, aerial or marine (surface or underwater).</rdfs:comment>
+  <rdfs:label>Drone</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DroneCarryingEquipment">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+  <rdfs:comment xml:lang="en">The equipment carried by the drone for different purposes.</rdfs:comment>
+  <rdfs:label xml:lang="en">Drone Carrying Equipment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RecordingEvent">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.datacron-project.eu/datAcron#occurs"/>
+      <owl:someValuesFrom>
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#RecordingPosition"/>
+            <rdf:Description rdf:about="#RecordingSegment"/>
+          </owl:unionOf>
+        </owl:Class>
+      </owl:someValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#produces"/>
+      <owl:onClass rdf:resource="#Record"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#records"/>
+      <owl:onClass rdf:resource="#EntityOfInterest"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">The aerial recording (process) of a region of interest, a movable or immovable object of interest, a moving or still object of interest, an event of interest.</rdfs:comment>
+  <rdfs:label xml:lang="en">Recording Event</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+  <rdfs:label xml:lang="en">Military Event</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UAVDrone">
+  <rdfs:subClassOf rdf:resource="#Drone"/>
+  <rdfs:subClassOf rdf:resource="#FlyingObject"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#carriesEquipment"/>
+      <owl:someValuesFrom rdf:resource="#DroneCarryingEquipment"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasFlight"/>
+      <owl:someValuesFrom rdf:resource="http://www.opengis.net/ont/sf#Flight"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">An aircraft without any human pilot, crew or passengers on board. The flight of the drone can be operated either remotely by a human or by a software.</rdfs:comment>
+  <rdfs:isDefinedBy xml:lang="en">https://en.wikipedia.org/wiki/Unmanned_aerial_vehicle</rdfs:isDefinedBy>
+  <rdfs:label xml:lang="en">UAV drone</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EntityOfInterest">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasInterest"/>
+      <owl:someValuesFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isRecordedIn"/>
+      <owl:onClass rdf:resource="#Record"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">The entity of interest of any kind (object, event, living organism), that the recording activity aims to record.</rdfs:comment>
+  <rdfs:label xml:lang="en">Entity of Interest</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Mission">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#includesFlight"/>
+      <owl:onClass rdf:resource="http://www.opengis.net/ont/sf#Flight"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">The mission of the drone flight. It may comprise more than one flight.</rdfs:comment>
+  <rdfs:label xml:lang="en">Mission</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SwarmOfDrones">
+  <rdfs:subClassOf rdf:resource="#Swarm"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/hasPartDrone"/>
+      <owl:onClass rdf:resource="#Drone"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">A set of drones flying in formation and collaboration to accomplish a mission</rdfs:comment>
+  <rdfs:label xml:lang="en">Swarm of drones</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Record">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Document"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isProducedBy"/>
+      <owl:someValuesFrom rdf:resource="#RecordingEvent"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">The result of the recording process.</rdfs:comment>
+  <rdfs:label xml:lang="en">Record</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProcessedRecord">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Document"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/ont.owl#originatesFrom"/>
+      <owl:onClass rdf:resource="#Record"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">A record which has been processed by experts using specialised software.</rdfs:comment>
+  <rdfs:label xml:lang="en">Processed Record</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Region_of_Interest">
+  <rdfs:subClassOf rdf:resource="#EntityOfInterest"/>
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Region"/>
+  <rdfs:comment xml:lang="en">The specific region that the recording activity aims to record. The region of interest may be a forest, an archaeological space, a town etc.</rdfs:comment>
+  <rdfs:label xml:lang="en">Region of Interest</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConstantRecordingPosition">
+  <rdfs:subClassOf rdf:resource="#RecordingPosition"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasOccurredEvent"/>
+      <owl:someValuesFrom>
+        <owl:Class>
+          <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#RecordingEvent"/>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#produces"/>
+              <owl:onClass rdf:resource="#Record"/>
+              <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+            </owl:Restriction>
+          </owl:intersectionOf>
+        </owl:Class>
+      </owl:someValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">The spatiotemporal position on which recording -constantly- occurs.</rdfs:comment>
+  <rdfs:label xml:lang="en">Constant Recording Position</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RecordingPosition">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#TrajectoryPart"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasOccurredEvent"/>
+      <owl:someValuesFrom rdf:resource="#RecordingEvent"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">The spatiotemporal position on which recording -instantly- occurs.</rdfs:comment>
+  <rdfs:label xml:lang="en">Recording Position</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DroneLaserScanner">
+  <rdfs:subClassOf rdf:resource="#DroneRecordingEquipment"/>
+  <rdfs:comment xml:lang="en">The device used for laser scanning.</rdfs:comment>
+  <rdfs:label xml:lang="en">Drone Laser Scanner</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DroneRecordingEquipment">
+  <rdfs:subClassOf rdf:resource="#DroneCarryingEquipment"/>
+  <rdfs:comment xml:lang="en">The devices used for the recording, and carried by the drone.</rdfs:comment>
+  <rdfs:label xml:lang="en">Drone Recording Equipment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DroneMillitaryEquipment">
+  <rdfs:subClassOf rdf:resource="#DroneCarryingEquipment"/>
+  <rdfs:comment xml:lang="en">The equipment used for military purposes, carried by the drone</rdfs:comment>
+  <rdfs:label xml:lang="en">Drone Military Equipment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DronePhotographicCamera">
+  <rdfs:subClassOf rdf:resource="#DroneRecordingEquipment"/>
+  <rdfs:comment xml:lang="en">The device used for photography.</rdfs:comment>
+  <rdfs:label xml:lang="en">Drone Photographic Camera</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DroneVideoCamera">
+  <rdfs:subClassOf rdf:resource="#DroneRecordingEquipment"/>
+  <rdfs:comment xml:lang="en">The device used for video recording.</rdfs:comment>
+  <rdfs:label xml:lang="en">Drone Video Camera</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EventOfInterest">
+  <rdfs:subClassOf rdf:resource="#EntityOfInterest"/>
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+  <rdfs:comment xml:lang="en">The specific event that the recording activity aims to record. This event may be a natural phenomenon, the movement of an individual etc.</rdfs:comment>
+  <rdfs:label xml:lang="en">Event of Interest</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FlyingObject">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Gun">
+  <rdfs:subClassOf rdf:resource="#DroneMillitaryEquipment"/>
+  <rdfs:label xml:lang="en">Gun</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GunShootingEvent">
+  <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent"/>
+  <rdfs:comment xml:lang="en">To model military-related events (of drones carrying guns)</rdfs:comment>
+  <rdfs:label xml:lang="en">GunShooting</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LaserScanningEvent">
+  <rdfs:subClassOf rdf:resource="#RecordingEvent"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasDroneParticipant"/>
+      <owl:allValuesFrom>
+        <owl:Class>
+          <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Drone"/>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#carriesEquipment"/>
+              <owl:allValuesFrom rdf:resource="#DroneLaserScanner"/>
+            </owl:Restriction>
+          </owl:intersectionOf>
+        </owl:Class>
+      </owl:allValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#produces"/>
+      <owl:allValuesFrom rdf:resource="#PointCloud"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">A laser scanner recording event.</rdfs:comment>
+  <rdfs:label xml:lang="en">Laser Scanning Event</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PointCloud">
+  <rdfs:subClassOf rdf:resource="#Record"/>
+  <rdfs:comment xml:lang="en">A set of data points in space which represent a 3D shape or object captured by a laser scanner.</rdfs:comment>
+  <rdfs:label xml:lang="en">Point Cloud</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MarineObject">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ObjectOfInterest">
+  <rdfs:subClassOf rdf:resource="#EntityOfInterest"/>
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+  <rdfs:comment xml:lang="en">The specific physical object that the recording activity aims to record. The object of interest may be a tree, a monument, a person etc.</rdfs:comment>
+  <rdfs:label xml:lang="en">Object of Interest</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PanoramicPhotograph">
+  <rdfs:subClassOf rdf:resource="#Photograph"/>
+  <rdfs:comment xml:lang="en">A photograph that captures horizontally elongated fields of view.</rdfs:comment>
+  <rdfs:label xml:lang="en">Panoramic Photograph</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Photograph">
+  <rdfs:subClassOf rdf:resource="#Record"/>
+  <rdfs:comment xml:lang="en">A picture made using a photographic camera.</rdfs:comment>
+  <rdfs:label xml:lang="en">Photograph</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PanoramicShootingEvent">
+  <rdfs:subClassOf rdf:resource="#PhotoShootingEvent"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#produces"/>
+      <owl:allValuesFrom rdf:resource="#PanoramicPhotograph"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">A photographic camera recording event which results in panoramic photos.</rdfs:comment>
+  <rdfs:label xml:lang="en">Panoramic Shooting Event</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhotoShootingEvent">
+  <rdfs:subClassOf rdf:resource="#RecordingEvent"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasDroneParticipant"/>
+      <owl:allValuesFrom>
+        <owl:Class>
+          <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Drone"/>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#carriesEquipment"/>
+              <owl:allValuesFrom rdf:resource="#DronePhotographicCamera"/>
+            </owl:Restriction>
+          </owl:intersectionOf>
+        </owl:Class>
+      </owl:allValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#produces"/>
+      <owl:allValuesFrom rdf:resource="#Photograph"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">A photographic camera recording event.</rdfs:comment>
+  <rdfs:label xml:lang="en">Photo Shooting Event</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PointOfInterest">
+  <rdfs:subClassOf rdf:resource="#EntityOfInterest"/>
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Point"/>
+  <rdfs:comment xml:lang="en">The specific spatial point that the recording activity aims to record. The point of interest may be literally one geometric point or an central point of a wider entity of interest.</rdfs:comment>
+  <rdfs:label xml:lang="en">Point of Interest</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RecordingSegment">
+  <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Segment"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasOccurredEvent"/>
+      <owl:someValuesFrom rdf:resource="#RecordingEvent"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.datacron-project.eu/datAcron#comprises"/>
+      <owl:someValuesFrom rdf:resource="#RecordingPosition"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment>The process of recording which takes place in certain spatiotemporal positions regarding the trajectory of the flying drone.</rdfs:comment>
+  <rdfs:label xml:lang="en">Recording Segment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Swarm">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract"/>
+  <rdfs:comment xml:lang="en">A group of flying entities which aggregate together and move en masse in the same direction, while they may have the same or close departure and starting point. Perhaps the flying entities have a common or similar mission.</rdfs:comment>
+  <rdfs:label xml:lang="en">Swarm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UMVDrone">
+  <rdfs:subClassOf rdf:resource="#Drone"/>
+  <rdfs:subClassOf rdf:resource="#MarineObject"/>
+  <rdfs:comment>A marine vehicle without any human pilot, crew or passengers on board. The trip of the drone can be operated either remotely by a human or by a software.</rdfs:comment>
+  <rdfs:label>UMV drone</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Video">
+  <rdfs:subClassOf rdf:resource="#Record"/>
+  <rdfs:comment xml:lang="en">A record of moving visual images captured by a video camera.</rdfs:comment>
+  <rdfs:label xml:lang="en">Video</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VideoRecordingEvent">
+  <rdfs:subClassOf rdf:resource="#RecordingEvent"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasDroneParticipant"/>
+      <owl:allValuesFrom>
+        <owl:Class>
+          <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Drone"/>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#carriesEquipment"/>
+              <owl:allValuesFrom rdf:resource="#DroneVideoCamera"/>
+            </owl:Restriction>
+          </owl:intersectionOf>
+        </owl:Class>
+      </owl:allValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#produces"/>
+      <owl:allValuesFrom rdf:resource="#Video"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">A video camera recording event.</rdfs:comment>
+  <rdfs:label xml:lang="en">Video Recording Event</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/SearchAndRescue">
+  <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent"/>
+  <rdfs:label xml:lang="en">Search and Rescue</rdfs:label>
+</owl:Class>
+
+<rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+
+<swrl:Variable rdf:about="#a"/>
+
+<swrl:Variable rdf:about="#b"/>
+
+<Drone rdf:about="#phantom_4_pro">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <carriesEquipment rdf:resource="#dji_fc6520"/>
+  <hasTrajectory rdf:resource="#trajectory_000"/>
+  <hasFlight rdf:resource="#flight_001"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">phantom 4 pro</rdfs:label>
+</Drone>
+
+<DronePhotographicCamera rdf:about="#dji_fc6520">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dji fc6520</rdfs:label>
+  <hasMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI</hasMaker>
+  <hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FC6520</hasModel>
+</DronePhotographicCamera>
+
+<datA:Trajectory rdf:about="#trajectory_000">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <encloses rdf:resource="#recording_segment_1"/>
+  <encloses rdf:resource="#recording_segment_2"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">trajectory 000</rdfs:label>
+</datA:Trajectory>
+
+<Mission rdf:about="#petrified_forest">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <includesFlight rdf:resource="#flight_001"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">petrified forest</rdfs:label>
+</Mission>
+
+<sf:Flight rdf:about="#flight_001">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">flight 001</rdfs:label>
+</sf:Flight>
+
+<RecordingSegment rdf:about="#recording_segment_1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:comprises rdf:resource="#recording_position_000"/>
+  <datA:comprises rdf:resource="#recording_position_001"/>
+  <datA:comprises rdf:resource="#recording_position_002"/>
+  <datA:comprises rdf:resource="#recording_position_003"/>
+  <datA:comprises rdf:resource="#recording_position_004"/>
+  <datA:comprises rdf:resource="#recording_position_005"/>
+  <datA:comprises rdf:resource="#recording_position_006"/>
+  <datA:comprises rdf:resource="#recording_position_007"/>
+  <datA:comprises rdf:resource="#recording_position_008"/>
+  <datA:comprises rdf:resource="#recording_position_009"/>
+  <datA:comprises rdf:resource="#recording_position_010"/>
+  <datA:comprises rdf:resource="#recording_position_011"/>
+  <datA:comprises rdf:resource="#recording_position_012"/>
+  <datA:comprises rdf:resource="#recording_position_013"/>
+  <datA:comprises rdf:resource="#recording_position_014"/>
+  <datA:comprises rdf:resource="#recording_position_015"/>
+  <datA:comprises rdf:resource="#recording_position_016"/>
+  <datA:comprises rdf:resource="#recording_position_017"/>
+  <datA:comprises rdf:resource="#recording_position_018"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording segment 1</rdfs:label>
+</RecordingSegment>
+
+<RecordingSegment rdf:about="#recording_segment_2">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:comprises rdf:resource="#recording_position_019"/>
+  <datA:comprises rdf:resource="#recording_position_020"/>
+  <datA:comprises rdf:resource="#recording_position_021"/>
+  <datA:comprises rdf:resource="#recording_position_022"/>
+  <datA:comprises rdf:resource="#recording_position_023"/>
+  <datA:comprises rdf:resource="#recording_position_024"/>
+  <datA:comprises rdf:resource="#recording_position_025"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording segment 2</rdfs:label>
+</RecordingSegment>
+
+<datA:Geometry rdf:about="#point_000">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_000"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 000</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">78.919</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569410972222222</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08484908333334</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_000">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 000</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:27:35</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_000">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 000</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_000">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_000"/>
+  <geos:hasGeometry rdf:resource="#point_000"/>
+  <hasOccurredEvent rdf:resource="#recording_event_000"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 000</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0047">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0047</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.5</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0047.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_000">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0047"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 000</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_000">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_000"/>
+  <produces rdf:resource="#DJI0047"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 000</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_001">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_001"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 001</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">84.119</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56941258333333</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.084845</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_001">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 001</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:27:43</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_001">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 001</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_001">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_001"/>
+  <geos:hasGeometry rdf:resource="#point_001"/>
+  <hasOccurredEvent rdf:resource="#recording_event_001"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 001</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0048">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0048</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.42</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0048.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_001">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0048"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 001</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_001">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_001"/>
+  <produces rdf:resource="#DJI0048"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 001</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_002">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_002"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 002</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">94.419</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569410972222222</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08484880555556</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_002">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 002</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:27:52</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_002">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 002</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_002">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_002"/>
+  <geos:hasGeometry rdf:resource="#point_002"/>
+  <hasOccurredEvent rdf:resource="#recording_event_002"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 002</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0049">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0049</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.22</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0049.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_002">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0049"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 002</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_002">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_002"/>
+  <produces rdf:resource="#DJI0049"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 002</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_003">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_003"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 003</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">95.919</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569409722222222</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.0848505</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_003">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 003</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:27:56</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_003">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 003</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_003">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_003"/>
+  <geos:hasGeometry rdf:resource="#point_003"/>
+  <hasOccurredEvent rdf:resource="#recording_event_003"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 003</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0050">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0050</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.93</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0050.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_003">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0050"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 003</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_003">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_003"/>
+  <produces rdf:resource="#DJI0050"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 003</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_004">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 004</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">95.919</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569462527777777</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.084919222222226</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_004">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 004</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:28:06</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_004">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 004</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_004">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_004"/>
+  <geos:hasGeometry rdf:resource="#point_004"/>
+  <hasOccurredEvent rdf:resource="#recording_event_004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 004</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0051">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0051</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.67</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0051.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_004">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0051"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 004</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_004">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_004"/>
+  <produces rdf:resource="#DJI0051"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 004</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_005">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_005"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 005</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">95.919</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56947263888889</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.084945000000005</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_005">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 005</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:28:08</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_005">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 005</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_005">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_005"/>
+  <geos:hasGeometry rdf:resource="#point_005"/>
+  <hasOccurredEvent rdf:resource="#recording_event_005"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 005</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0052">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0052</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.67</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0052.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_005">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0052"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 005</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_005">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_005"/>
+  <produces rdf:resource="#DJI0052"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 005</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_006">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_006"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 006</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">95.719</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56943825</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08504627777778</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_006">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 006</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:28:20</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_006">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 006</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_006">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_006"/>
+  <geos:hasGeometry rdf:resource="#point_006"/>
+  <hasOccurredEvent rdf:resource="#recording_event_006"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 006</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0053">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0053</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.14</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0053.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_006">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0053"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 006</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_006">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_006"/>
+  <produces rdf:resource="#DJI0053"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 006</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_007">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_007"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 007</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">96.019</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56941297222222</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.085103583333336</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_007">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 007</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:28:26</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_007">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 007</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_007">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_007"/>
+  <geos:hasGeometry rdf:resource="#point_007"/>
+  <hasOccurredEvent rdf:resource="#recording_event_007"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 007</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0054">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0054</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.3</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0054.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_007">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0054"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 007</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_007">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_007"/>
+  <produces rdf:resource="#DJI0054"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 007</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_008">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 008</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">95.719</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56937936111111</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08515811111111</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_008">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 008</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:28:30</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_008">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 008</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_008">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_008"/>
+  <geos:hasGeometry rdf:resource="#point_008"/>
+  <hasOccurredEvent rdf:resource="#recording_event_008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 008</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0055">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0055</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.19</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0055.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_008">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0055"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 008</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_008">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_008"/>
+  <produces rdf:resource="#DJI0055"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 008</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_009">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_009"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 009</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">95.919</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56925136111111</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.085206500000005</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_009">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 009</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:28:39</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_009">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 009</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_009">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_009"/>
+  <geos:hasGeometry rdf:resource="#point_009"/>
+  <hasOccurredEvent rdf:resource="#recording_event_009"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 009</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0057">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0057</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.25</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0057.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_009">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0057"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 009</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_009">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_009"/>
+  <produces rdf:resource="#DJI0057"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 009</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_010">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_010"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 010</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">96.119</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569186805555557</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08517975</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_010">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 010</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:28:42</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_010">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 010</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_010">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_010"/>
+  <geos:hasGeometry rdf:resource="#point_010"/>
+  <hasOccurredEvent rdf:resource="#recording_event_010"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 010</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0058">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0058</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.95</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0058.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_010">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0058"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 010</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_010">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_010"/>
+  <produces rdf:resource="#DJI0058"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 010</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_011">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_011"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 011</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">97.319</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569114666666668</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08512325</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_011">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 011</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:28:47</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_011">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 011</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_011">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_011"/>
+  <geos:hasGeometry rdf:resource="#point_011"/>
+  <hasOccurredEvent rdf:resource="#recording_event_011"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 011</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0059">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0059</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.72</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0059.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_011">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0059"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 011</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_011">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_011"/>
+  <produces rdf:resource="#DJI0059"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 011</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_012">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_012"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 012</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">101.019</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56906288888889</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08506911111111</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_012">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 012</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:28:52</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_012">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 012</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_012">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_012"/>
+  <geos:hasGeometry rdf:resource="#point_012"/>
+  <hasOccurredEvent rdf:resource="#recording_event_012"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 012</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0060">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0060</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.71</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0060.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_012">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0060"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 012</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_012">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_012"/>
+  <produces rdf:resource="#DJI0060"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 012</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_013">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_013"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 013</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">105.019</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.568960722222222</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08491466666667</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_013">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 013</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:29:01</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_013">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 013</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_013">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_013"/>
+  <geos:hasGeometry rdf:resource="#point_013"/>
+  <hasOccurredEvent rdf:resource="#recording_event_013"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 013</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0061">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0061</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.53</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0061.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_013">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0061"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 013</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_013">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_013"/>
+  <produces rdf:resource="#DJI0061"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 013</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_014">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_014"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 014</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">106.019</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56892886111111</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08486466666667</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_014">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 014</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:29:04</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_014">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 014</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_014">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_014"/>
+  <geos:hasGeometry rdf:resource="#point_014"/>
+  <hasOccurredEvent rdf:resource="#recording_event_014"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 014</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0062">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0062</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.65</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0062.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_014">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0062"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 014</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_014">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_014"/>
+  <produces rdf:resource="#DJI0062"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 014</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_015">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 015</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">108.519</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.568870222222223</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08478675</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_015">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 015</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:29:08</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_015">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 015</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_015">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_015"/>
+  <geos:hasGeometry rdf:resource="#point_015"/>
+  <hasOccurredEvent rdf:resource="#recording_event_015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 015</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0063">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0063</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.91</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0063.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_015">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0063"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 015</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_015">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_015"/>
+  <produces rdf:resource="#DJI0063"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 015</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_016">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 016</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">115.619</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56879877777778</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.084683444444444</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_016">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 016</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:29:16</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_016">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 016</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_016">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_016"/>
+  <geos:hasGeometry rdf:resource="#point_016"/>
+  <hasOccurredEvent rdf:resource="#recording_event_016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 016</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0064">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0064</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.2</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0064.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_016">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0064"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 016</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of Aegean, Πανεπιστημίου, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">162166559</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_016">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_016"/>
+  <produces rdf:resource="#DJI0064"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 016</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_017">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_017"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 017</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">115.519</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.568837833333333</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08464161111112</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_017">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 017</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:29:21</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_017">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 017</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_017">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_017"/>
+  <geos:hasGeometry rdf:resource="#point_017"/>
+  <hasOccurredEvent rdf:resource="#recording_event_017"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 017</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0065">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0065</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.57</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0065.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_017">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0065"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 017</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996248</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_017">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_017"/>
+  <produces rdf:resource="#DJI0065"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 017</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_018">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_018"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 018</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">119.719</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56901461111111</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08460352777778</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_018">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 018</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:29:35</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_018">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 018</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_018">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_018"/>
+  <geos:hasGeometry rdf:resource="#point_018"/>
+  <hasOccurredEvent rdf:resource="#recording_event_018"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 018</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0067">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0067</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.18</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0067.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_018">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0067"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 018</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996248</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_018">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_018"/>
+  <produces rdf:resource="#DJI0067"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 018</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_019">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 019</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">85.819</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569356166666665</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.084896722222226</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_019">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 019</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:31:14</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_019">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 019</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_019">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_019"/>
+  <geos:hasGeometry rdf:resource="#point_019"/>
+  <hasOccurredEvent rdf:resource="#recording_event_019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 019</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0069">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0069</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.31</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0069.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_019">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0069"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 019</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_019">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_019"/>
+  <produces rdf:resource="#DJI0069"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 019</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_020">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 020</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">83.119</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.56936963888889</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.084860444444445</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_020">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 020</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:31:30</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_020">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 020</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_020">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_020"/>
+  <geos:hasGeometry rdf:resource="#point_020"/>
+  <hasOccurredEvent rdf:resource="#recording_event_020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 020</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0070">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0070</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.85</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0070.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_020">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0070"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 020</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_020">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_020"/>
+  <produces rdf:resource="#DJI0070"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 020</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_021">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_021"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 021</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">81.219</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569370499999998</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08486027777778</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_021">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 021</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:31:34</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_021">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 021</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_021">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_021"/>
+  <geos:hasGeometry rdf:resource="#point_021"/>
+  <hasOccurredEvent rdf:resource="#recording_event_021"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 021</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0071">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0071</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.47</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0071.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_021">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0071"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 021</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_021">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_021"/>
+  <produces rdf:resource="#DJI0071"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 021</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_022">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_022"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 022</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">81.019</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569381444444446</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.084853333333335</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_022">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 022</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:31:43</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_022">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 022</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_022">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_022"/>
+  <geos:hasGeometry rdf:resource="#point_022"/>
+  <hasOccurredEvent rdf:resource="#recording_event_022"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 022</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0072">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0072</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.35</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0072.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_022">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0072"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 022</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_022">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_022"/>
+  <produces rdf:resource="#DJI0072"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 022</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_023">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 023</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">79.719</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569380527777778</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08485438888889</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_023">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 023</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:31:47</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_023">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 023</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_023">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_023"/>
+  <geos:hasGeometry rdf:resource="#point_023"/>
+  <hasOccurredEvent rdf:resource="#recording_event_023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 023</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0073">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0073</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.31</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0073.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_023">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0073"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 023</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_023">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_023"/>
+  <produces rdf:resource="#DJI0073"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 023</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_024">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_024"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 024</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">79.619</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569379805555556</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.08485491666667</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_024">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 024</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:31:52</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_024">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 024</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_024">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_024"/>
+  <geos:hasGeometry rdf:resource="#point_024"/>
+  <hasOccurredEvent rdf:resource="#recording_event_024"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 024</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0074">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0074</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.83</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0074.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_024">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0074"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 024</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_024">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_024"/>
+  <produces rdf:resource="#DJI0074"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 024</rdfs:label>
+</PhotoShootingEvent>
+
+<datA:Geometry rdf:about="#point_025">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasTemporalFeature rdf:resource="#instant_025"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">point 025</rdfs:label>
+  <datA:hasAltitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">79.219</datA:hasAltitude>
+  <datA:hasLattitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26.569380166666665</datA:hasLattitude>
+  <datA:hasLongitude rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.084855250000004</datA:hasLongitude>
+</datA:Geometry>
+
+<datA:Instant rdf:about="#instant_025">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instant 025</rdfs:label>
+  <DUL.:hasIntervalDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21:12:08 13:31:56</DUL.:hasIntervalDate>
+</datA:Instant>
+
+<datA:WeatherCondition rdf:about="#weather_condition_025">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weather condition 025</rdfs:label>
+  <datA:reportedMaxTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMaxTemperature>
+  <datA:reportedMinTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.0</datA:reportedMinTemperature>
+  <datA:reportedDewPoint rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.0</datA:reportedDewPoint>
+  <datA:reportedPressure rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1010.0</datA:reportedPressure>
+  <datA:windDirectionMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMax>
+  <datA:windDirectionMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">230.0</datA:windDirectionMin>
+  <datA:windSpeedMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMax>
+  <datA:windSpeedMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.8</datA:windSpeedMin>
+</datA:WeatherCondition>
+
+<RecordingPosition rdf:about="#recording_position_025">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <datA:hasWeatherCondition rdf:resource="#weather_condition_025"/>
+  <geos:hasGeometry rdf:resource="#point_025"/>
+  <hasOccurredEvent rdf:resource="#recording_event_025"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording position 025</rdfs:label>
+</RecordingPosition>
+
+<Photograph rdf:about="#DJI0075">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DJI0075</rdfs:label>
+  <hasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.41</hasSize>
+  <hasStoragePath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C:\Users\andre\Andreas\Ευφυή Συστήματα Πληροφορικής\movingpandas\tutorials\photosets\inspire_2\DJI_0075.JPG</hasStoragePath>
+  <hasFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JPG</hasFormat>
+</Photograph>
+
+<Region_of_Interest rdf:about="#region_of_interest_025">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isRecordedIn rdf:resource="#DJI0075"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">region of interest 025</rdfs:label>
+  <hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1, ΞΕΝΙΑ, Λόφος Ξενία, Vareia, Mytilene Municipal Unit, Municipality of Mytilene, Lesbos Regional Unit, Northern Aegean, Aegean, 811 00, Greece</hasAddress>
+  <hasPlaceID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">340996249</hasPlaceID>
+  <hasOSMType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">way</hasOSMType>
+</Region_of_Interest>
+
+<PhotoShootingEvent rdf:about="#recording_event_025">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDroneParticipant rdf:resource="#phantom_4_pro"/>
+  <records rdf:resource="#region_of_interest_025"/>
+  <produces rdf:resource="#DJI0075"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recording event 025</rdfs:label>
+</PhotoShootingEvent>
+
+<swrl:Imp>
+  <swrl:body>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#RecordingEvent"/>
+          <swrl:argument1 rdf:resource="#a"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest>
+        <swrl:AtomList>
+          <rdf:first>
+            <swrl:IndividualPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="http://www.datacron-project.eu/datAcron#occurs"/>
+              <swrl:argument1 rdf:resource="#a"/>
+              <swrl:argument2 rdf:resource="#b"/>
+            </swrl:IndividualPropertyAtom>
+          </rdf:first>
+          <rdf:rest>
+            <swrl:AtomList>
+              <rdf:first>
+                <swrl:ClassAtom>
+                  <swrl:classPredicate rdf:resource="http://www.datacron-project.eu/datAcron#RawPosition"/>
+                  <swrl:argument1 rdf:resource="#b"/>
+                </swrl:ClassAtom>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </swrl:AtomList>
+          </rdf:rest>
+        </swrl:AtomList>
+      </rdf:rest>
+    </swrl:AtomList>
+  </swrl:body>
+  <swrl:head>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#RecordingPosition"/>
+          <swrl:argument1 rdf:resource="#b"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </swrl:AtomList>
+  </swrl:head>
+  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rule 1 - Infer Recording position</rdfs:label>
+</swrl:Imp>
+
+
+</rdf:RDF>

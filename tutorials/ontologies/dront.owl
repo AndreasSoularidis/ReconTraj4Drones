@@ -1,0 +1,1417 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://i-lab.aegean.gr/kotis/ontologies/onto4drone"
+     xml:base="http://i-lab.aegean.gr/kotis/ontologies/onto4drone"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:DUL="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:sosa="http://www.w3.org/ns/sosa/"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:schema="http://schema.org/"
+     xmlns:datAcron="http://www.datacron-project.eu/datAcron#"
+     xmlns:onto4drone="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#"
+     xmlns:onto4drone1="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/">
+    <owl:Ontology rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone">
+        <owl:versionIRI rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/1.0.1"/>
+        <owl:imports rdf:resource="http://www.datacron-project.eu/datAcron#"/>
+        <dc:contributor>A. Soularidis, i-Lab, University of the Aegean</dc:contributor>
+        <dc:contributor>E. Moraitou, i-Lab, University of the Aegean</dc:contributor>
+        <dc:contributor>K. Kotis, i-Lab, University of the Aegean</dc:contributor>
+        <dc:contributor>S. Angelis, i-Lab, University of the Aegean</dc:contributor>
+        <vann:preferredNamespacePrefix xml:lang="en">dront</vann:preferredNamespacePrefix>
+        <rdfs:comment xml:lang="en">The aim of the ontology is to represent the knowledge related to drones&apos; semantic trajectories (flights, missions, recordings). Reuses datAcron ontology.</rdfs:comment>
+        <rdfs:label xml:lang="en">onto4drone</rdfs:label>
+        <owl:versionInfo xml:lang="en">version 1.0.1
+
+This version includes two extra data properties whose domain is the class DroneCarryingEquipment, three extra data properties whose domain is the class Record, one data properties whose domain is the class EntityOfInterest and two data properties whose domain is the class RegionOfInterest. Regarding the object properties two inverse object properties  (has occured event&quot; and &quot;is produced by&quot;) and one more object property (&quot;has interest&quot;) have been added.
+
+Furthremore, axioms have been added to the classes Record, Recording Position, and Constant Recording Position.
+
+Additionally, the class EntityOfInterest has been moved under the DUL general class Entity, while the data property &quot;has time&quot; has been removed as well.
+
+Finally some changes/additions which have been conducted to the domains and/or ranges of the data properties hasAltittude, TimeEnd, TimeStart, and has interval date have been removed as well.
+
+Regarding individuals, there have been added all the individuals presented in the example of the knowledge graph designed by the group (https://arrows.app/#/googledrive/ids=1f-NEXdFHa0bSXGaBI6MoCpLdOyLtFXP2).</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/contributor -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#hasGeometry -->
+
+    <owl:AnnotationProperty rdf:about="http://www.datacron-project.eu/datAcron#hasGeometry"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#reportedMaxTemperature -->
+
+    <owl:AnnotationProperty rdf:about="http://www.datacron-project.eu/datAcron#reportedMaxTemperature"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#minQualifiedCardinality -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#minQualifiedCardinality"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#carriesEquipment -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#carriesEquipment">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+        <rdfs:range rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneCarryingEquipment"/>
+        <rdfs:comment xml:lang="en">Specifies the equipment carried by a drone</rdfs:comment>
+        <rdfs:label xml:lang="en">carries equipment</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#encloses -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#encloses">
+        <rdfs:subPropertyOf rdf:resource="http://www.datacron-project.eu/datAcron#hasPart"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#Trajectory"/>
+        <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#Segment"/>
+        <rdfs:comment xml:lang="en">Specifies the trajectory that the segments is part of</rdfs:comment>
+        <rdfs:label xml:lang="en">encloses</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasDroneParticipant -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasDroneParticipant">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant"/>
+        <owl:inverseOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isDroneParticipantIn"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+                    <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+        <rdfs:comment xml:lang="en">Specifies the drone that participates in an event.</rdfs:comment>
+        <rdfs:label xml:lang="en">has drone participant</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasFlight -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasFlight">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParticipantIn"/>
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#UAVDrone"/>
+        <rdfs:range rdf:resource="http://www.opengis.net/ont/sf#Flight"/>
+        <rdfs:label xml:lang="en">has flight</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasInterest -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasInterest">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="en">Correlates an entity of interest with the type of interest that it presents.</rdfs:comment>
+        <rdfs:label xml:lang="en">has interest</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasOccurredEvent -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasOccurredEvent">
+        <owl:inverseOf rdf:resource="http://www.datacron-project.eu/datAcron#occurs"/>
+        <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#TrajectoryPart"/>
+        <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+        <rdfs:label xml:lang="en">has occurred event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasTrajectory -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasTrajectory">
+        <owl:inverseOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#trajectoryRefersTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+        <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#Trajectory"/>
+        <rdfs:comment xml:lang="en">Specifies the moving object that forms the trajectory.</rdfs:comment>
+        <rdfs:label xml:lang="en">has trajectory</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#includesFlight -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#includesFlight">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasConstituent"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Mission"/>
+        <rdfs:range rdf:resource="http://www.opengis.net/ont/sf#Flight"/>
+        <rdfs:comment xml:lang="en">Specifies flightes included in a misson</rdfs:comment>
+        <rdfs:label xml:lang="en">includes flight</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isDroneParticipantIn -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isDroneParticipantIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParticipantIn"/>
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+                    <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:label xml:lang="en">is drone participant in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isPartOfSwarm -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isPartOfSwarm">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isPartOf"/>
+        <owl:inverseOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/hasPartDrone"/>
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+        <rdfs:range rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#SwarmOfDrones"/>
+        <rdfs:label xml:lang="en">is part of swarm</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isProducedBy -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isProducedBy">
+        <owl:inverseOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#produces"/>
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:range rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+        <rdfs:label xml:lang="en">is produced by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isRecordedIn -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isRecordedIn">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest"/>
+        <rdfs:range rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:comment xml:lang="en">Specifies the records an entity has been recorded in</rdfs:comment>
+        <rdfs:label xml:lang="en">is recorded in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#produces -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#produces">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+        <rdfs:range rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:comment xml:lang="en">Specifies the record produced by a recornding event</rdfs:comment>
+        <rdfs:label xml:lang="en">produces</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#records -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#records">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+        <rdfs:range rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest"/>
+        <rdfs:comment xml:lang="en">Specifies the entity that is beeing recorded in a recording event</rdfs:comment>
+        <rdfs:label xml:lang="en">records</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#trajectoryRefersTo -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#trajectoryRefersTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#Trajectory"/>
+        <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+        <rdfs:comment xml:lang="en">Defines the moving object that the trajectory is referring to.</rdfs:comment>
+        <rdfs:label xml:lang="en">trajectory refers to</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone/hasPartDrone -->
+
+    <owl:ObjectProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/hasPartDrone">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart"/>
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#SwarmOfDrones"/>
+        <rdfs:range rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+        <rdfs:label xml:lang="en">has part drone</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#clusters -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#clusters">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart"/>
+        <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#TrajectoryCluster"/>
+        <rdfs:range rdf:resource="http://www.datacron-project.eu/datAcron#Trajectory"/>
+        <rdfs:comment>Defines the trajectories clusetered in a TrajectorCluster</rdfs:comment>
+        <rdfs:label xml:lang="en">clusters</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#originatesFrom -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#originatesFrom">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#ProcessedRecord"/>
+        <rdfs:range rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:comment xml:lang="en">Defines the record from which a processed record originates</rdfs:comment>
+        <rdfs:label xml:lang="en">originates from</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#comprises -->
+
+    <owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#comprises"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#hasHighPoint -->
+
+    <owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasHighPoint"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#hasLowPoint -->
+
+    <owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasLowPoint"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasPart"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#hasTemporalFeature -->
+
+    <owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasTemporalFeature"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#hasWeatherCondition -->
+
+    <owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#hasWeatherCondition"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#occurs -->
+
+    <owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#occurs"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#ofMovingObject -->
+
+    <owl:ObjectProperty rdf:about="http://www.datacron-project.eu/datAcron#ofMovingObject"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasConstituent -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasConstituent"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRegion -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRegion"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasTimeInterval -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasTimeInterval"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isPartOf"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParticipantIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParticipantIn"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#overlaps -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#overlaps"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#hasGeometry -->
+
+    <owl:ObjectProperty rdf:about="http://www.opengis.net/ont/geosparql#hasGeometry"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasAddress -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasAddress">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Region_of_Interest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has address</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasFormat -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasFormat">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has format</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasMaker -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasMaker">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneCarryingEquipment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has maker</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasModel -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasModel">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneCarryingEquipment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has model</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasOSMType -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasOSMType">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has OSM type</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasPlaceID -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasPlaceID">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Region_of_Interest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has place ID</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasSize -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasSize">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has size</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasStoragePath -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasStoragePath">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has storage path</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasVelocity -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasVelocity">
+        <rdfs:domain rdf:resource="http://www.datacron-project.eu/datAcron#Geometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has velocity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isActivated -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isActivated">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">is activated</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isPaused -->
+
+    <owl:DatatypeProperty rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isPaused">
+        <rdfs:domain rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">is paused</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#TimeEnd -->
+
+    <owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#TimeEnd"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#TimeStart -->
+
+    <owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#TimeStart"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#hasAltitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#hasAltitude"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#hasLattitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#hasLattitude">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#hasLongitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.datacron-project.eu/datAcron#hasLongitude">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasIntervalDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasIntervalDate"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#ConstantRecordingPosition -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#ConstantRecordingPosition">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingPosition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasOccurredEvent"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#produces"/>
+                                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                                <owl:onClass rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The spatiotemporal position on which recording -constantly- occurs.</rdfs:comment>
+        <rdfs:label xml:lang="en">Constant Recording Position</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+        <rdfs:comment>Any type of unmanned vehicle, aerial or marine (surface or underwater).</rdfs:comment>
+        <rdfs:label>Drone</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneCarryingEquipment -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneCarryingEquipment">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+        <rdfs:comment xml:lang="en">The equipment carried by the drone for different purposes.</rdfs:comment>
+        <rdfs:label xml:lang="en">Drone Carrying Equipment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneLaserScanner -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneLaserScanner">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneRecordingEquipment"/>
+        <rdfs:comment xml:lang="en">The device used for laser scanning.</rdfs:comment>
+        <rdfs:label xml:lang="en">Drone Laser Scanner</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneMillitaryEquipment -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneMillitaryEquipment">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneCarryingEquipment"/>
+        <rdfs:comment xml:lang="en">The equipment used for military purposes, carried by the drone</rdfs:comment>
+        <rdfs:label xml:lang="en">Drone Military Equipment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DronePhotographicCamera -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DronePhotographicCamera">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneRecordingEquipment"/>
+        <rdfs:comment xml:lang="en">The device used for photography.</rdfs:comment>
+        <rdfs:label xml:lang="en">Drone Photographic Camera</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneRecordingEquipment -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneRecordingEquipment">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneCarryingEquipment"/>
+        <rdfs:comment xml:lang="en">The devices used for the recording, and carried by the drone.</rdfs:comment>
+        <rdfs:label xml:lang="en">Drone Recording Equipment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneVideoCamera -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneVideoCamera">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneRecordingEquipment"/>
+        <rdfs:comment xml:lang="en">The device used for video recording.</rdfs:comment>
+        <rdfs:label xml:lang="en">Drone Video Camera</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasInterest"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isRecordedIn"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The entity of interest of any kind (object, event, living organism), that the recording activity aims to record.</rdfs:comment>
+        <rdfs:label xml:lang="en">Entity of Interest</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EventOfInterest -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EventOfInterest">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest"/>
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+        <rdfs:comment xml:lang="en">The specific event that the recording activity aims to record. This event may be a natural phenomenon, the movement of an individual etc.</rdfs:comment>
+        <rdfs:label xml:lang="en">Event of Interest</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#FlyingObject -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#FlyingObject">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Gun -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Gun">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneMillitaryEquipment"/>
+        <rdfs:label xml:lang="en">Gun</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#GunShootingEvent -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#GunShootingEvent">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent"/>
+        <rdfs:comment xml:lang="en">To model military-related events (of drones carrying guns)</rdfs:comment>
+        <rdfs:label xml:lang="en">GunShooting</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#LaserScanningEvent -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#LaserScanningEvent">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasDroneParticipant"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#carriesEquipment"/>
+                                <owl:allValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneLaserScanner"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#produces"/>
+                <owl:allValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PointCloud"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A laser scanner recording event.</rdfs:comment>
+        <rdfs:label xml:lang="en">Laser Scanning Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#MarineObject -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#MarineObject">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#MovingObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Mission -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Mission">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#includesFlight"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.opengis.net/ont/sf#Flight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The mission of the drone flight. It may comprise more than one flight.</rdfs:comment>
+        <rdfs:label xml:lang="en">Mission</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#ObjectOfInterest -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#ObjectOfInterest">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+        <rdfs:comment xml:lang="en">The specific physical object that the recording activity aims to record. The object of interest may be a tree, a monument, a person etc.</rdfs:comment>
+        <rdfs:label xml:lang="en">Object of Interest</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PanoramicPhotograph -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PanoramicPhotograph">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Photograph"/>
+        <rdfs:comment xml:lang="en">A photograph that captures horizontally elongated fields of view.</rdfs:comment>
+        <rdfs:label xml:lang="en">Panoramic Photograph</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PanoramicShootingEvent -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PanoramicShootingEvent">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PhotoShootingEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#produces"/>
+                <owl:allValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PanoramicPhotograph"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A photographic camera recording event which results in panoramic photos.</rdfs:comment>
+        <rdfs:label xml:lang="en">Panoramic Shooting Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PhotoShootingEvent -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PhotoShootingEvent">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasDroneParticipant"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#carriesEquipment"/>
+                                <owl:allValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DronePhotographicCamera"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#produces"/>
+                <owl:allValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Photograph"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A photographic camera recording event.</rdfs:comment>
+        <rdfs:label xml:lang="en">Photo Shooting Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Photograph -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Photograph">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:comment xml:lang="en">A picture made using a photographic camera.</rdfs:comment>
+        <rdfs:label xml:lang="en">Photograph</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PointCloud -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PointCloud">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:comment xml:lang="en">A set of data points in space which represent a 3D shape or object captured by a laser scanner.</rdfs:comment>
+        <rdfs:label xml:lang="en">Point Cloud</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PointOfInterest -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#PointOfInterest">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest"/>
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Point"/>
+        <rdfs:comment xml:lang="en">The specific spatial point that the recording activity aims to record. The point of interest may be literally one geometric point or an central point of a wider entity of interest.</rdfs:comment>
+        <rdfs:label xml:lang="en">Point of Interest</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#ProcessedRecord -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#ProcessedRecord">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Document"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/ont.owl#originatesFrom"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A record which has been processed by experts using specialised software.</rdfs:comment>
+        <rdfs:label xml:lang="en">Processed Record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Document"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#isProducedBy"/>
+                <owl:someValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The result of the recording process.</rdfs:comment>
+        <rdfs:label xml:lang="en">Record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.datacron-project.eu/datAcron#occurs"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingPosition"/>
+                            <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingSegment"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#produces"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#records"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The aerial recording (process) of a region of interest, a movable or immovable object of interest, a moving or still object of interest, an event of interest.</rdfs:comment>
+        <rdfs:label xml:lang="en">Recording Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingPosition -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingPosition">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#TrajectoryPart"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasOccurredEvent"/>
+                <owl:someValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The spatiotemporal position on which recording -instantly- occurs.</rdfs:comment>
+        <rdfs:label xml:lang="en">Recording Position</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingSegment -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingSegment">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Segment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasOccurredEvent"/>
+                <owl:someValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.datacron-project.eu/datAcron#comprises"/>
+                <owl:someValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingPosition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The process of recording which takes place in certain spatiotemporal positions regarding the trajectory of the flying drone.</rdfs:comment>
+        <rdfs:label xml:lang="en">Recording Segment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Region_of_Interest -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Region_of_Interest">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#EntityOfInterest"/>
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Region"/>
+        <rdfs:comment xml:lang="en">The specific region that the recording activity aims to record. The region of interest may be a forest, an archaeological space, a town etc.</rdfs:comment>
+        <rdfs:label xml:lang="en">Region of Interest</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Swarm -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Swarm">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract"/>
+        <rdfs:comment xml:lang="en">A group of flying entities which aggregate together and move en masse in the same direction, while they may have the same or close departure and starting point. Perhaps the flying entities have a common or similar mission.</rdfs:comment>
+        <rdfs:label xml:lang="en">Swarm</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#SwarmOfDrones -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#SwarmOfDrones">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Swarm"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/hasPartDrone"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A set of drones flying in formation and collaboration to accomplish a mission</rdfs:comment>
+        <rdfs:label xml:lang="en">Swarm of drones</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#UAVDrone -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#UAVDrone">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#FlyingObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#carriesEquipment"/>
+                <owl:someValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneCarryingEquipment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasFlight"/>
+                <owl:someValuesFrom rdf:resource="http://www.opengis.net/ont/sf#Flight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An aircraft without any human pilot, crew or passengers on board. The flight of the drone can be operated either remotely by a human or by a software.</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">https://en.wikipedia.org/wiki/Unmanned_aerial_vehicle</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">UAV drone</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#UMVDrone -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#UMVDrone">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#MarineObject"/>
+        <rdfs:comment>A marine vehicle without any human pilot, crew or passengers on board. The trip of the drone can be operated either remotely by a human or by a software.</rdfs:comment>
+        <rdfs:label>UMV drone</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Video -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Video">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Record"/>
+        <rdfs:comment xml:lang="en">A record of moving visual images captured by a video camera.</rdfs:comment>
+        <rdfs:label xml:lang="en">Video</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone#VideoRecordingEvent -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#VideoRecordingEvent">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#hasDroneParticipant"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Drone"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#carriesEquipment"/>
+                                <owl:allValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#DroneVideoCamera"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#produces"/>
+                <owl:allValuesFrom rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#Video"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A video camera recording event.</rdfs:comment>
+        <rdfs:label xml:lang="en">Video Recording Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent">
+        <rdfs:subClassOf rdf:resource="http://www.datacron-project.eu/datAcron#Event"/>
+        <rdfs:label xml:lang="en">Military Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://i-lab.aegean.gr/kotis/ontologies/onto4drone/SearchAndRescue -->
+
+    <owl:Class rdf:about="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/SearchAndRescue">
+        <rdfs:subClassOf rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone/MilitaryEvent"/>
+        <rdfs:label xml:lang="en">Search and Rescue</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#ActualTrajectory -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#ActualTrajectory"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Aircraft -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Aircraft"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Document -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Document"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Event -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Event"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Geometry -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Geometry"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Instant -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Instant"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#MovingObject -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#MovingObject"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Period -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Period"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Point -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Point"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#RawPosition -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#RawPosition"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Region -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Region"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Segment -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Segment"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Time -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Time"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#Trajectory -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#Trajectory"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#TrajectoryCluster -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#TrajectoryCluster"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#TrajectoryPart -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#TrajectoryPart"/>
+    
+
+
+    <!-- http://www.datacron-project.eu/datAcron#WeatherCondition -->
+
+    <owl:Class rdf:about="http://www.datacron-project.eu/datAcron#WeatherCondition"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalArtifact -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalArtifact"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/sf#Flight -->
+
+    <owl:Class rdf:about="http://www.opengis.net/ont/sf#Flight"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/sf#Geometry -->
+
+    <owl:Class rdf:about="http://www.opengis.net/ont/sf#Geometry"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/sf#Point -->
+
+    <owl:Class rdf:about="http://www.opengis.net/ont/sf#Point"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="#a">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="#b">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rule 1 - Infer Recording position</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingEvent"/>
+                        <swrl:argument1 rdf:resource="#a"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.datacron-project.eu/datAcron#occurs"/>
+                                <swrl:argument1 rdf:resource="#a"/>
+                                <swrl:argument2 rdf:resource="#b"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.datacron-project.eu/datAcron#RawPosition"/>
+                                        <swrl:argument1 rdf:resource="#b"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://i-lab.aegean.gr/kotis/ontologies/onto4drone#RecordingPosition"/>
+                        <swrl:argument1 rdf:resource="#b"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
