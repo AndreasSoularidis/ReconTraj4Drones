@@ -28,4 +28,6 @@ dependencies:
   - owlready2
   - haversine
   - exif
+  - pip:
+    - meteostat
 
