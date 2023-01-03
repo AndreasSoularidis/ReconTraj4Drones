@@ -44,3 +44,5 @@ To ensure a high-level formalism we use the ontological approach. Particularly, 
 
 ## Scientific Papers
 Soularidis, A., Kotis, K. (2022). Semantic Modeling and Reconstruction of Drones’ Trajectories. In: , et al. The Semantic Web: ESWC 2022 Satellite Events. ESWC 2022. Lecture Notes in Computer Science, vol 13384. Springer, Cham. https://doi.org/10.1007/978-3-031-11609-4_30
+
+Kotis, K.; Soularidis, A. ReconTraj4Drones: A Framework for the Reconstruction and Semantic Modeling of UAVs’ Trajectories on MovingPandas. Appl. Sci. 2023, 13, 670. https://doi.org/10.3390/app13010670
